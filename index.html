@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <meta name="description" content="Join the $ucky Panther community on Solana for exclusive rewards, memes, and massive gains. Get ready for a wild crypto adventure!">
+    <meta property="og:title" content="$ucky Panther - Wild Crypto Adventure">
+    <meta property="og:description" content="Join the $ucky Panther community on Solana for exclusive rewards, memes, and massive gains.">
+    <meta property="og:image" content="images/suckypanther_Logo-removebg-preview.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preload" href="images/suckypanther_Logo-removebg-preview.png" as="image">
+    <link rel="preload" href="images/junglebg.jpg" as="image">
 </head>
 <body>
     <div class="ticker-wrap">
@@ -32,9 +39,12 @@
         </div>
     </div>
 
-    <nav class="navbar">
-        <div class="logo">$uckyP</div>
-        <div class="nav-links">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="logo" role="banner">$uckyP</div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
+        <div class="nav-links" role="menu">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#meme">Meme</a>
@@ -171,8 +181,8 @@
                 <span class="contract-title">GOTA Contract Address</span>
             </div>
             <div class="contract-content">
-                <span class="address-text">Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs</span>
-                <button class="copy-btn" aria-label="Copy address">
+                <span class="address-text" id="contract-address">Hdkhm7bFRR63zbFcLo3d1D6rJRnpe5yjrvMCAuqWdCrs</span>
+                <button class="copy-btn" aria-label="Copy contract address" onclick="copyContractAddress()">
                     <i class="fas fa-copy"></i>
                     <span class="copy-text">Copy</span>
                 </button>
@@ -212,7 +222,7 @@
                 <i class="fas fa-wallet"></i>
                 <h3>Step 2: Set Up Wallet</h3>
                 <p>Create a Phantom wallet and transfer your SOL to it.</p>
-                <a href="#" class="step-link" target="_blank">Get Phantom Wallet</a>
+                <a href="https://phantom.app/" class="step-link" target="_blank" rel="noopener noreferrer">Get Phantom Wallet</a>
             </div>
             <div class="step-box">
                 <i class="fas fa-exchange-alt"></i>

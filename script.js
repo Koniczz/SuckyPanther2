@@ -271,4 +271,48 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
+
+    // Add copy functionality
+    function copyContractAddress() {
+        const address = document.getElementById('contract-address').textContent;
+        navigator.clipboard.writeText(address).then(() => {
+            const copyBtn = document.querySelector('.copy-btn');
+            const copyText = copyBtn.querySelector('.copy-text');
+            copyText.textContent = 'Copied!';
+            setTimeout(() => {
+                copyText.textContent = 'Copy';
+            }, 2000);
+        });
+    }
+
+    // Add mobile menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuToggle?.addEventListener('click', () => {
+        const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+        mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+    });
+
+    // Add modal accessibility improvements
+    function handleModalOpen(modal) {
+        const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+        
+        firstFocusable.focus();
+        
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey && document.activeElement === firstFocusable) {
+                    e.preventDefault();
+                    lastFocusable.focus();
+                } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+                    e.preventDefault();
+                    firstFocusable.focus();
+                }
+            }
+        });
+    }
 });
