@@ -53,12 +53,23 @@ body {
 
 .ticker {
     display: inline-flex;
-    animation: ticker 40s linear infinite;
+    height: 100%;
+    animation: ticker 30s linear infinite;
     white-space: nowrap;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
+    padding-left: 100%;
 }
 
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 2rem;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Update ticker animation */
 @keyframes ticker {
     0% {
         transform: translate3d(0, 0, 0);
@@ -68,23 +79,31 @@ body {
     }
 }
 
-.ticker-item {
-    display: inline-flex;
-    padding: 0 2rem;
-    font-size: 0.9rem;
-    color: white;
-    font-weight: 500;
-    line-height: 40px;
+/* Add performance optimizations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
 }
 
-.ticker-item::after {
-    content: "•";
-    position: relative;
-    margin-left: 2rem;
+/* Smooth scrolling optimization */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
-.ticker-item:last-child::after {
-    content: "";
+/* Optimize animations */
+.hero, .step-box, .about-card, .meme-card, .roadmap-card {
+    will-change: transform, opacity;
+}
+
+/* Add hardware acceleration for animations */
+.ticker, .hero-logo, .social-btn, .buy-btn, .connect-btn {
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Update navbar position to account for ticker */
@@ -1466,5 +1485,62 @@ body {
     
     .social-links {
         gap: 1.5rem;
+    }
+}
+
+/* Update tool link styles */
+.tool-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+}
+
+.tool-link:not(.coming-soon):hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.tool-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.coming-soon {
+    opacity: 0.6;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.soon-tag {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Update contract tools layout */
+.contract-tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .contract-tools {
+        grid-template-columns: 1fr;
     }
 }
